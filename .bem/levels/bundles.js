@@ -24,7 +24,7 @@ exports.getTechs = function() {
         'ie9.css'            : 'v2/ie9.css',
 
         'bemhtml'            : join(BEMCORE_TECHS, 'bemhtml.js'),
-        'bemhtml'            : join(BEMCORE_TECHS, 'bemtree.js'),
+        'bemtree'            : join(BEMCORE_TECHS, 'bemtree.js'),
         'html'               : join(BEMCORE_TECHS, 'html.js')
     };
 
