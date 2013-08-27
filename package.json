@@ -17,5 +17,8 @@
     "cocaine": "~0.2.6"
   },
   "devDependencies": {},
+  "scripts": {
+    "postinstall" : "bem make"
+  },
   "private": true
 }
