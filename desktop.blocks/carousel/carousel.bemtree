@@ -1,0 +1,57 @@
+block carousel, content: {
+
+    var data = this.data;
+
+    return this.doAsync(function() {
+        var dfd = Vow.promise(),
+            // apiUrl = 'http://api-fotki.yandex.ru/api/users/ya-events/album/145885/photos/?format=json'; // BEMup
+            apiUrl = 'http://api-fotki.yandex.ru/api/users/ya-events/album/138124/photos/?format=json'; // Я.Субботник в Минске, июнь 2012
+
+        Request.get(apiUrl, function(err, results, body) {
+            if (err) return dfd.reject(new Error('API request error: ', err));
+
+            return dfd.fulfill(JSON.parse(body).entries);
+        });
+
+        return dfd;
+
+        })
+        .then(
+            function(entries) {
+                var c = entries.map(function(entry, idx) {
+                    return {
+                        elem: 'item',
+                        elemMods: idx ? undefined : { state: 'active' },
+                        content: {
+                            elem: 'img',
+                            url: entry.img.XL.href
+                        }
+                    };
+                });
+
+                c.push({
+                    elem: 'control',
+                    elemMods: { type: 'left', theme: 'default' },
+                    content: '&lsaquo;'
+                },
+                {
+                    elem: 'control',
+                    elemMods: { type: 'right', theme: 'default' },
+                    content: '&rsaquo;'
+                });
+
+                return apply(
+                    this._mode = '',
+                    this.data = data,
+                    this.ctx = { elem : 'inner', content : c }
+                );
+            },
+            function(err) {
+                this._buf = apply(
+                    this._mode = '',
+                    this.ctx = { err : 404, data : err }
+                );
+            },
+            this
+        );
+}

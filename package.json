@@ -14,11 +14,12 @@
     "bem-environ": "~1.0.1",
     "express": "~3.3.5",
     "optimist": "~0.6.0",
-    "cocaine": "~0.2.x"
+    "cocaine": "0.2.x",
+    "request": "~2.27.0"
   },
   "devDependencies": {},
   "scripts": {
-    "postinstall" : "bem make"
+    "postinstall": "bem make"
   },
   "private": true
 }

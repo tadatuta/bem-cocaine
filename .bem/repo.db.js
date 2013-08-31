@@ -51,6 +51,10 @@ module.exports = {
     'bem-yana' : {
         type     : 'git',
         url      : 'git://github.com/narqo/bem-yana.git'
+    },
+    'bl-carousel' : {
+        type     : 'git',
+        url      : 'git://github.com/tadatuta/bl-carousel.git'
     }
 
 };

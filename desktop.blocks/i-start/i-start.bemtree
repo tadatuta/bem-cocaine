@@ -3,7 +3,7 @@ this._mode === '' && !this.data: {
         this._mode = '',
         this.data = {
             bundleName : 'index',
-            pageTitle  : 'Обработчик события click'
+            pageTitle  : 'bem on cocaine'
         },
         this.ctx = {
             block : 'page',

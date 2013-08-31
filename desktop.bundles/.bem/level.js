@@ -11,7 +11,8 @@ exports.getConfig = function() {
                 'bem-core/common.blocks',
                 'bem-core/desktop.blocks',
                 'bem-components/common.blocks',
-                'bem-components/desktop.blocks'
+                'bem-components/desktop.blocks',
+                'bl-carousel/desktop.blocks'
             ]
             .map(function(path) { return PATH.resolve(environ.LIB_ROOT, path); })
             .concat([

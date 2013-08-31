@@ -26,9 +26,10 @@ block page {
     }
 
     content: [
-        { block : 'b-square', js : { id : 1 } },
-        { block : 'some-block' },
-        { block : 'b-square', js : { id : 1 } }
+        {
+            block : 'carousel',
+            mods: { animate: 'yes' }
+        }
     ]
 
     mod error not-found, content: 'Nothing found'
