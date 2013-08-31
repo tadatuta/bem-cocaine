@@ -1,19 +1,7 @@
-#!/opt/nodejs/0.10/bin/node
-
-/**
- * Module dependencies.
- */
-
 var express = require('express'),
     app = express();
 
-// all environments
-//app.use(express.favicon());
-//app.use(express.logger('dev'));
-//app.use(express.bodyParser());
-//app.use(express.methodOverride());
 app.use(express.static(__dirname + '/desktop.bundles/index'));
-//app.use(express.errorHandler());
 
 var http = require('http');
 
