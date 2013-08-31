@@ -5,10 +5,7 @@
  */
 
 var express = require('express'),
-    app = express(),
-    argv = require('optimist').argv;
-    
-argv.uuid && app.set('env', 'cocaine');
+    app = express();
 
 // all environments
 //app.use(express.favicon());
@@ -18,27 +15,11 @@ argv.uuid && app.set('env', 'cocaine');
 app.use(express.static(__dirname + '/desktop.bundles/index'));
 //app.use(express.errorHandler());
 
-// cocaine only
-if (app.get('env') == 'cocaine') {
+var http = require('http');
 
-    var cocaine = require('cocaine'),
-        http = cocaine.http,
-        Worker = new cocaine.Worker(argv),
-        handle = Worker.getListenHandle('http');
+app.set('handle', process.env.PORT || 3000);
 
-    app.set('handle', handle);
-
-    var server = new http.Server(app);
-
-} else {
-
-    var http = require('http');
-
-    app.set('handle', process.env.PORT || 3000);
-
-    var server = http.createServer(app);
-
-}
+var server = http.createServer(app);
 
 var BEMHTML = require('./desktop.bundles/index/_index.bemhtml.js').BEMHTML,
     BEMTREE = require('./desktop.bundles/index/index.bemtree.js').BEMTREE;
@@ -50,13 +31,7 @@ app.get('/', function(req, res) {
         });
 });
 
-app.get('/bla', function(req, res) {
-   res.send('bla');
-});
-
 server.listen(app.get('handle'), function() {
     console.log('Express server listening on ' +
-        (typeof app.get('handle') === 'number' ?
-            'port ' + app.get('handle') :
-            'cocane handle'));
+        app.get('handle'));
 });
